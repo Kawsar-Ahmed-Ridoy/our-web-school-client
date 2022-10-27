@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Button, Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
+import photo from '../../../image/photo.png'
 
 
 // const Header = () => {
@@ -19,7 +19,7 @@ const Header = () => {
         <div className='mb-4 sticky-top'>
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
   <Container>
-    <Navbar.Brand><Link to={'/'}>Our Web School</Link></Navbar.Brand>
+    <Navbar.Brand><img height={40} src={photo} alt=''/> <Link to={'/'} className="text-decoration-none fw-bold">Our Web School</Link></Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="me-auto">

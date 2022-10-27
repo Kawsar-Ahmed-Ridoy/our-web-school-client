@@ -14,9 +14,9 @@ const {image_url, id, details, title, author} = cours;
           <Card.Text className='fw-bold mb-0'>
            {title}
           </Card.Text>
-          <div>
-            <p>Details: {details.slice(0,50) + '...'}</p>
-          </div>
+         {details.length > 50 ?
+          <p>Details: {details.slice(0,40) + '...'} <Link to={`courses/${id}`}>details</Link> </p> : <p>{details}</p>
+         }
           <div className='text-center'>
           <Link >
           <Button variant="primary">Start Quiz</Button>
