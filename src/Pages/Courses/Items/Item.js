@@ -1,0 +1,32 @@
+import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
+
+const Item = ({cours}) => {
+const {image_url, id, details, title, author} = cours;
+    return (
+               <div className="mx-auto">
+            <Card style={{ width: '18rem',  height:'450px'}}>
+        <Card.Img height={250} className='bg-black rounded-2' variant="top" src={image_url}  />      
+        <Card.Body className='  '>
+          <Card.Title className='fw-bold'>{author.name}</Card.Title>
+          <Card.Text className='fw-bold mb-0'>
+           {title}
+          </Card.Text>
+          <div>
+            <p>Details: {details.slice(0,50) + '...'}</p>
+          </div>
+          <div className='text-center'>
+          <Link >
+          <Button variant="primary">Start Quiz</Button>
+          </Link>
+          </div>
+          
+        </Card.Body>
+      </Card>
+        </div>
+    );
+};
+
+export default Item;

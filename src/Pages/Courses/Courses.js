@@ -1,10 +1,24 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import Item from './Items/Item';
+
+
 
 const Courses = () => {
-    return (
-        <div>
-            <h1>this is Courses</h1>
-        </div>
+const allCourse = useLoaderData()
+
+    return (<div className='d-flex flex-wrap gap-4 justify-content-between justify-content-sm-center '>
+      {
+        allCourse.map(cours => 
+            <Item
+        key={cours.id}
+        cours={cours}
+        ></Item>
+          )
+    }  
+    </div>
+
+ 
     );
 };
 
