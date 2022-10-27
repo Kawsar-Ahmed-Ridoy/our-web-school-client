@@ -9,10 +9,10 @@ const allCourse = useLoaderData()
 console.log(allCourse);
     return (<div className='d-flex flex-wrap gap-4 justify-content-between justify-content-sm-center '>
       {
-        allCourse.map(cours => 
+        allCourse.map(course => 
             <Item
-        key={cours.id}
-        cours={cours}
+        key={course.id}
+        course={course}
         ></Item>
           )
     }  

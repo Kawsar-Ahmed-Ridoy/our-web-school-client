@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
-const Item = ({cours}) => {
-const {image_url, id, details, title, author} = cours;
+const Item = ({course}) => {
+const {image_url, id, details, title, author} = course;
     return (
                <div className="mx-auto">
             <Card style={{ width: '18rem',  height:'450px'}}>
@@ -15,7 +15,7 @@ const {image_url, id, details, title, author} = cours;
            {title}
           </Card.Text>
          {details.length > 50 ?
-          <p>Details: {details.slice(0,40) + '...'} <Link to={`courses/${id}`}>details</Link> </p> : <p>{details}</p>
+          <p>Details: {details.slice(0,40) + '...'} <Link to={`/category/${id}`}>details</Link> </p> : <p>{details}</p>
          }
           <div className='text-center'>
           <Link >
