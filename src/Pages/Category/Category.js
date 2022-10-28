@@ -1,12 +1,17 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Categories from './Categories';
 
 const Category = () => {
     const category = useLoaderData();
-    // console.log(category);
+    
     return (
         <div>
-            <h1>this is category {category.length}</h1>
+            {
+                category.map(cat => <Categories 
+                    key={cat._id} 
+                    cat={cat}></Categories>)
+            }
         </div>
     );
 };

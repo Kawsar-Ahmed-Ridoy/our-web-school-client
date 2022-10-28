@@ -5,6 +5,7 @@ import Courses from "../Pages/Courses/Courses";
 import Item from "../Pages/Courses/Items/Item";
 import Home from "../Pages/Home/Home";
 import ErrorPage from "../ErrorPage/ErrorPage"
+import PremiumCourses from "../Pages/Category/PremiumCourses/PremiumCourses";
 
 export const routes = createBrowserRouter([
     {
@@ -35,6 +36,11 @@ export const routes = createBrowserRouter([
             {
                 path:'/item',
                 element: <Item></Item>
+            },
+            {
+                path:"/premium-course",
+                element: <PremiumCourses></PremiumCourses>,
+                loader: ()=> fetch('http://localhost:5000/courses')
             }
         ]
     }
