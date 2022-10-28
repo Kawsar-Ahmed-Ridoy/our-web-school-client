@@ -16,7 +16,12 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 // }
 
 const Header = () => {
-  const {user} = useContext(AuthContext)
+  const {user, logOut} = useContext(AuthContext);
+  const handleLogOut =()=>{
+    logOut()
+    .then(()=>{})
+    .catch(error => console.error(error))
+  }
     return (
         <div className='mb-4 sticky-top'>
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -35,7 +40,7 @@ const Header = () => {
           {
             user?.uid ?
             <><span className='my-auto fw-bold'>{user?.displayName}</span>
-            <Button  className='mx-2'>Log out</Button>
+            <Button onClick={handleLogOut} className='mx-2'>Log out</Button>
             </> 
             
             : <>

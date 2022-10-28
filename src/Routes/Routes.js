@@ -7,6 +7,8 @@ import Home from "../Pages/Home/Home";
 import ErrorPage from "../ErrorPage/ErrorPage"
 import PremiumCourses from "../Pages/Category/PremiumCourses/PremiumCourses";
 import Login from "../PrivateRoute/Login/Login";
+import Register from "../PrivateRoute/Register/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -40,12 +42,16 @@ export const routes = createBrowserRouter([
             },
             {
                 path:"/premium-course",
-                element: <PremiumCourses></PremiumCourses>,
+                element: <PrivateRoute><PremiumCourses></PremiumCourses></PrivateRoute>,
                 loader: ()=> fetch('http://localhost:5000/courses')
             },
             {
                 path:"/login",
                 element: <Login></Login>
+            },
+            {
+                path:"/register",
+                element: <Register></Register>
             }
         ]
     }
