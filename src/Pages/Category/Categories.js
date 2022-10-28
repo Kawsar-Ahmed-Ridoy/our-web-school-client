@@ -8,7 +8,7 @@ const Categories = ({cat}) => {
     return (
         <div className='my-4'>
             <Card style={{ width: '80%', margin:"auto" }}>
-      <Card.Img variant="top" height={"400px"} src={image_url} />
+      <Card.Img className='px-3 pt-3' variant="top" height={"400px"} src={image_url} />
       <Card.Body>
         <Card.Title>{author.name}</Card.Title>
         Title: {title}

@@ -3,6 +3,7 @@ import { Button, Container, Image, Nav, Navbar, NavDropdown } from 'react-bootst
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import photo from '../../../image/photo.png'
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 
 // const Header = () => {
@@ -15,6 +16,7 @@ import photo from '../../../image/photo.png'
 // }
 
 const Header = () => {
+  const {user} = useContext(AuthContext)
     return (
         <div className='mb-4 sticky-top'>
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -22,27 +24,18 @@ const Header = () => {
     <Navbar.Brand><img height={40} src={photo} alt=''/> <Link to={'/'} className="text-decoration-none fw-bold">Our Web School</Link></Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
-      <Nav className="me-auto">
-        <Nav.Link href="#features">All News</Nav.Link>
-        <Nav.Link href="#pricing">Category</Nav.Link>
-        <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">
-            Another action
-          </NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4">
-            Separated link
-          </NavDropdown.Item>
-        </NavDropdown>
+      <Nav className="me-auto fw-bold">
+        <Link className='mx-2' to='/courses'>Courses</Link>
+        <Link className='mx-2'>Blog</Link>
+        <Link className='mx-2'>FAQ</Link>
+  
       </Nav>
       <Nav>
-        {/* <>
+        <>
           {
             user?.uid ?
-            <><span>{user?.displayName}</span>
-            <Button onClick={handleLogOut} className='ms-2'>Log out</Button>
+            <><span className='my-auto fw-bold'>{user?.displayName}</span>
+            <Button  className='mx-2'>Log out</Button>
             </> 
             
             : <>
@@ -56,11 +49,8 @@ const Header = () => {
           {user?.photoURL ?
         <Image style={{height:'35px', width:"35px"}} roundedCircle src={user?.photoURL}></Image>  : <FaUser></FaUser>
         }
-        </Link> */}
+        </Link>
       </Nav>
-      {/* <div className="d-lg-none">
-        <LeftSideNav></LeftSideNav>
-      </div> */}
     </Navbar.Collapse>
   </Container>
 </Navbar>
