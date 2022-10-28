@@ -6,15 +6,6 @@ import photo from '../../../image/photo.png'
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 
-// const Header = () => {
-//   const {user , logOut} = useContext(AuthContext)
-
-// const handleLogOut = () =>{
-//   logOut()
-//   .then(()=>{})
-//   .catch(error => console.error(error))
-// }
-
 const Header = () => {
   const {user, logOut} = useContext(AuthContext);
   const handleLogOut =()=>{
@@ -31,8 +22,8 @@ const Header = () => {
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="me-auto fw-bold">
         <Link className='mx-2' to='/courses'>Courses</Link>
-        <Link className='mx-2'>Blog</Link>
-        <Link className='mx-2'>FAQ</Link>
+        <Link to='/blogs' className='mx-2'>Blog</Link>
+        <Link to="/faq" className='mx-2'>FAQ</Link>
   
       </Nav>
       <Nav>

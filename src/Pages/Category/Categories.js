@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
 const Categories = ({cat}) => {
-    const {author, price, category_id, details, image_url, title, _id} = cat
+    const {author,  details, image_url, title, } = cat
     return (
         <div className='my-4'>
             <Card style={{ width: '80%', margin:"auto" }}>

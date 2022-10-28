@@ -3,7 +3,7 @@ import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const PremiumCourse = ({premium}) => {
-    const {image_url, price, details, title, author} =premium
+    const {image_url, price, details, title, } =premium
     return (
         <div className='my-4'>
             <Card style={{ width: '100%', }}>
