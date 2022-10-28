@@ -7,48 +7,44 @@ import Form from "react-bootstrap/Form";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Pages/context/AuthProvider/AuthProvider";
 
-const Login = () => {
-    /*google login */
-    //   const { providerLogin } = useContext(AuthContext);
-    
-    //   const googleProvider = new GoogleAuthProvider();
-    
-    //   const handleGoogleSignIn = () => {
-        //     providerLogin(googleProvider)
-        //       .then((result) => {
-            //         const user = result.user;
-            //         console.log(user);
-            //       })
-            //       .catch((error) => console.error(error));
-            /*google login */
-            
-            const { signIn } = useContext(AuthContext);
-            const [error, setError] = useState('')
-            const navigate = useNavigate();
-            const location = useLocation()
-            const from = location.state?.from?.pathname || '/';
-            const handleSubmit = (event) => {
-      event.preventDefault();
-      const form = event.target;
-      const email = form.email.value;
-      const password = form.password.value;
-      signIn(email, password)
-    .then(result =>{
+
+const Login = () => {  
+  const { signIn , providerLogin} = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const googleProvider = new GoogleAuthProvider()
+  const handleGoogleSignIn = () =>{
+      providerLogin(googleProvider)
+      .then(result =>{
+          const user = result.user;
+          console.log(user);
+      })
+      .catch(error => console.error(error))
+  }
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    signIn(email, password)
+      .then((result) => {
         const user = result.user;
         console.log(user);
         form.reset();
-        setError('')
-        navigate('/');
-        navigate(from, {replace: true});
-    })
-    .catch(error => {
-        console.error(error)
-        setError(error.message)
-    }
-        
- )
-    };
- 
+        setError("");
+        navigate("/");
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      });
+  };
+
   return (
     <div>
       <Form onSubmit={handleSubmit}>
@@ -74,12 +70,10 @@ const Login = () => {
         <Button variant="primary" type="submit">
           Login
         </Button>
-        <Form.Text className="text-danger">
-            {error}
-        </Form.Text>
+        <Form.Text className="text-danger">{error}</Form.Text>
       </Form>
 
-      <Button >click</Button>
+      <Button className="mt-2" onClick={handleGoogleSignIn}>Login With Google</Button>
     </div>
   );
 };

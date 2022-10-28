@@ -1,15 +1,28 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Pages/context/AuthProvider/AuthProvider';
 
 
 
 const Register = () => {
+ 
     const [error, setError] = useState()
-    const {createUser, updateUserProfile } =useContext(AuthContext)
+    const {createUser, updateUserProfile, providerLogin } =useContext(AuthContext)
+    
+    const googleProvider = new GoogleAuthProvider()
+    const handleGoogleSignIn = () =>{
+        providerLogin(googleProvider)
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error))
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -27,7 +40,7 @@ const Register = () => {
         setError('')
         form.reset()
         handleUpdateUserProfile(name,photoURL)
-
+        toast.success("Register Successfully")
     })
     .catch(error => {
         console.error(error)
@@ -44,7 +57,8 @@ const Register = () => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
+       <div>
+         <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Your Name</Form.Label>
           <Form.Control type="text" name="name" placeholder="Your Name" />
@@ -73,6 +87,9 @@ const Register = () => {
             {error}
           </Form.Text>
       </Form>
+      <Button className="mt-2" onClick={handleGoogleSignIn}>Login With Google</Button>
+       </div>
+      
     );
 };
 

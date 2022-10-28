@@ -44,13 +44,13 @@ const Header = () => {
             </> 
             
             : <>
-            <Link to='/login'>Login</Link>
-            <Link to='/register'>Register</Link>
+            <Link className='mx-2' to='/login'>Login</Link>
+            <Link className='mx-2' to='/register'>Register</Link>
             </>
           }
 
           </>
-        <Link to='/profile'>
+        <Link>
           {user?.photoURL ?
         <Image style={{height:'35px', width:"35px"}} roundedCircle src={user?.photoURL}></Image>  : <FaUser></FaUser>
         }

@@ -11,7 +11,7 @@ const ErrorPage = () => {
             <Link to={'/'}><button className='btn btn-primary'>Back To Home Page</button></Link>
         </div> 
 </div>
-    //     </div> */}
+
       
     );
 };
